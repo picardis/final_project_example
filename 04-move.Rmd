@@ -1,0 +1,39 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+# Movements of Dragons in Utah {#mov}
+
+```{r load3, echo = FALSE, eval = TRUE, message = FALSE}
+library(DBI)
+
+dragons_db <- dbConnect(RSQLite::SQLite(), "../../Course Material/Data/dragons/dragons.db")
+
+dragons <- dbGetQuery(dragons_db, "SELECT * FROM dragons;")
+capture_sites <- dbGetQuery(dragons_db, "SELECT * FROM capture_sites;")
+captures <- dbGetQuery(dragons_db, "SELECT * FROM captures;")
+morphometrics <- dbGetQuery(dragons_db, "SELECT * FROM morphometrics;")
+diet <- dbGetQuery(dragons_db, "SELECT * FROM diet;")
+tags <- dbGetQuery(dragons_db, "SELECT * FROM tags;")
+deployments <- dbGetQuery(dragons_db, "SELECT * FROM deployments;")
+telemetry <- dbGetQuery(dragons_db, "SELECT * FROM gps_data;")
+```
+
+Ours is the first ever GPS-tracking study of dragons. We are excited to be able
+to share the first ever map of dragon movements in Utah:
+
+```{r}
+
+telemetry %>% 
+  left_join(captures, by = "dragon_id") %>% 
+  rename(x = utm_x, y = utm_y) %>% 
+  ggplot(aes(x = x, y = y, color = site)) +
+  geom_path() +
+  geom_point(data = capture_sites, mapping = aes(x = utm_x, y = utm_y),
+             color = "black", size = 2) +
+  labs(x = "UTM Easting", y = "UTM Northing") +
+  theme_bw()
+
+```
+

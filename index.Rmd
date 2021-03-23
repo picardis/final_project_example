@@ -1,0 +1,30 @@
+--- 
+title: "Dragon Ecology in Utah"
+author: "Simona Picardi"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+description: "This is my final project for WILD 6900 - CTRS (USU, Spring 2021)"
+---
+
+# Introduction
+
+This research is focused on the ecology of dragons in Utah. Dragons are heavily understudied and this is the first research ever conducted about them. I will focus on answering questions related to their diet, life history, and movement ecology. 
+
+## Project Goals
+
+The goal of this project is to answer a few specific questions:
+
+1. Assess whether dragon species that originally evolved in different continents 
+have different body characteristics;
+2. Quantify the diet composition of adult dragons in Utah;
+3. Map movements of dragons in Utah. 
+
+## Project Outline
+
+This book is composed of the following Chapters:
+
+* Chapter \@ref(db), Database Creation
+* Chapter \@ref(morph), Body Characheristics of Dragon Species Evolved in Different Continents
+* Chapter \@ref(diet-comp), Diet Composition of Adult Dragons in Utah
+* Chapter \@ref(mov), Movements of Dragons in Utah

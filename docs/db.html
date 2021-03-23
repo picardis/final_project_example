@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Database creation | Dragon Ecology in Utah</title>
+  <meta name="description" content="This is my final project for WILD 6900 - CTRS (USU, Spring 2021)" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Database creation | Dragon Ecology in Utah" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is my final project for WILD 6900 - CTRS (USU, Spring 2021)" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Database creation | Dragon Ecology in Utah" />
+  
+  <meta name="twitter:description" content="This is my final project for WILD 6900 - CTRS (USU, Spring 2021)" />
+  
+
+<meta name="author" content="Simona Picardi" />
+
+
+<meta name="date" content="2021-03-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="morph.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Final Project Example</a></li>
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#project-goals"><i class="fa fa-check"></i><b>1.1</b> Project Goals</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#project-outline"><i class="fa fa-check"></i><b>1.2</b> Project Outline</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="db.html"><a href="db.html"><i class="fa fa-check"></i><b>2</b> Database creation</a><ul>
+<li class="chapter" data-level="2.0.1" data-path="db.html"><a href="db.html#dragons"><i class="fa fa-check"></i><b>2.0.1</b> Dragons</a></li>
+<li class="chapter" data-level="2.0.2" data-path="db.html"><a href="db.html#tags"><i class="fa fa-check"></i><b>2.0.2</b> Tags</a></li>
+<li class="chapter" data-level="2.0.3" data-path="db.html"><a href="db.html#capture-sites"><i class="fa fa-check"></i><b>2.0.3</b> Capture sites</a></li>
+<li class="chapter" data-level="2.0.4" data-path="db.html"><a href="db.html#captures"><i class="fa fa-check"></i><b>2.0.4</b> Captures</a></li>
+<li class="chapter" data-level="2.0.5" data-path="db.html"><a href="db.html#morphometrics"><i class="fa fa-check"></i><b>2.0.5</b> Morphometrics</a></li>
+<li class="chapter" data-level="2.0.6" data-path="db.html"><a href="db.html#diet"><i class="fa fa-check"></i><b>2.0.6</b> Diet</a></li>
+<li class="chapter" data-level="2.0.7" data-path="db.html"><a href="db.html#deployments"><i class="fa fa-check"></i><b>2.0.7</b> Deployments</a></li>
+<li class="chapter" data-level="2.0.8" data-path="db.html"><a href="db.html#gps-tracking-data"><i class="fa fa-check"></i><b>2.0.8</b> GPS-tracking data</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="morph.html"><a href="morph.html"><i class="fa fa-check"></i><b>3</b> Body Characteristics of Dragon Species Evolved in Different Continents</a></li>
+<li class="chapter" data-level="4" data-path="diet-comp.html"><a href="diet-comp.html"><i class="fa fa-check"></i><b>4</b> Diet Composition of Adult Dragons in Utah</a></li>
+<li class="chapter" data-level="5" data-path="mov.html"><a href="mov.html"><i class="fa fa-check"></i><b>5</b> Movements of Dragons in Utah</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Dragon Ecology in Utah</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="db" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Database creation</h1>
+<p>We collected data of multiple types on dragons in Utah. First, we captured
+dragons at 5 different sites across the state. Some of these dragons were
+equipped with GPS-tracking devices to study their movements. Whenever possible,
+we measured dragons before releasing them and collected information on their age
+class, species, and sex. We also collected diet samples we found across the
+landscape in the form of regurgitations and classified the single items found
+within each sample. Capture was not necessary to obtain diet samples.</p>
+<p>We used a relational database to house our data. Our database structure looks
+like this:</p>
+<div class="figure" style="text-align: center"><span id="fig:erd"></span>
+<img src="img/database_diagram.png" alt="Diagram of the dragons database" width="80%" />
+<p class="caption">
+Figure 2.1: Diagram of the dragons database
+</p>
+</div>
+<p>The database is composed of 9 tables. The <em>dragons</em> table includes individual
+information on the sample individuals. The <em>captures</em> table contains information
+on when and where each dragon was captured, and it’s linked to the <em>capture sites</em>
+table which stores the coordinates of each capture site. The <em>morphometrics</em>
+table contains body measurements and the <em>diet</em> table contains information on
+diet samples. Both of these are linked to the <em>dragons</em> table based on
+individual IDs. We also tracked some of these dragons, so we have a <em>tags</em> table
+which lists all the different GPS units we deployed within the project. The
+<em>deployments</em> table tells us which dragon was wearing each tag at any given time,
+and therefore it’s linked to both the <em>dragons</em> and the <em>tags</em> table through the
+dragon IDs and the tag IDs, respectively. A <em>raw GPS data</em> table contains
+telemetry data in its raw form, i.e., as it comes out of the tags, and it’s
+therefore linked to the <em>tags</em> table via the tag ID. Finally, a <em>processed GPS data</em>
+table associates the tracking data to the dragons. Primary keys are in italics
+and foreign keys are in bold. Connectors link tables with one another based on
+their foreign keys.</p>
+<p>We created the database in RSQLite.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="db.html#cb1-1"></a><span class="kw">library</span>(DBI)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="db.html#cb2-1"></a>dragons_db &lt;-<span class="st"> </span><span class="kw">dbConnect</span>(RSQLite<span class="op">::</span><span class="kw">SQLite</span>(), <span class="st">&quot;../../Course Material/Data/dragons/dragons.db&quot;</span>)</span></code></pre></div>
+<div id="dragons" class="section level3">
+<h3><span class="header-section-number">2.0.1</span> Dragons</h3>
+<p>First, we created the dragons table, which stores information on every single
+dragon individual we have any type of data for:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="db.html#cb3-1"></a><span class="kw">dbExecute</span>(dragons_db, <span class="st">&quot;CREATE TABLE dragons (</span></span>
+<span id="cb3-2"><a href="db.html#cb3-2"></a><span class="st">dragon_id varchar(5) NOT NULL,</span></span>
+<span id="cb3-3"><a href="db.html#cb3-3"></a><span class="st">sex char(1) CHECK (sex IN (&#39;M&#39;, &#39;F&#39;)),</span></span>
+<span id="cb3-4"><a href="db.html#cb3-4"></a><span class="st">age_class varchar(8) CHECK (age_class IN (&#39;Juvenile&#39;, &#39;Subadult&#39;, &#39;Adult&#39;)),</span></span>
+<span id="cb3-5"><a href="db.html#cb3-5"></a><span class="st">species varchar(50),</span></span>
+<span id="cb3-6"><a href="db.html#cb3-6"></a><span class="st">PRIMARY KEY (dragon_id)</span></span>
+<span id="cb3-7"><a href="db.html#cb3-7"></a><span class="st">);&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="db.html#cb4-1"></a>dragons &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;../../Course Material/Data/dragons/dragons.csv&quot;</span>, </span>
+<span id="cb4-2"><a href="db.html#cb4-2"></a>                   <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>) </span>
+<span id="cb4-3"><a href="db.html#cb4-3"></a></span>
+<span id="cb4-4"><a href="db.html#cb4-4"></a><span class="kw">names</span>(dragons)</span></code></pre></div>
+<pre><code>## [1] &quot;dragon&quot;    &quot;sex&quot;       &quot;age_class&quot; &quot;species&quot;</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="db.html#cb6-1"></a><span class="kw">names</span>(dragons)[<span class="dv">1</span>] &lt;-<span class="st"> &quot;dragon_id&quot;</span></span></code></pre></div>
+<p>And imported data into it:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="db.html#cb7-1"></a><span class="kw">dbWriteTable</span>(dragons_db, <span class="st">&quot;dragons&quot;</span>, dragons, <span class="dt">append =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="db.html#cb8-1"></a><span class="kw">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM dragons LIMIT 10;&quot;</span>)</span></code></pre></div>
+<pre><code>##    dragon_id  sex age_class             species update_timestamp
+## 1         D1    F  Subadult     Hebridean Black             &lt;NA&gt;
+## 2         D2 &lt;NA&gt;  Juvenile   Romanian Longhorn             &lt;NA&gt;
+## 3         D3    F     Adult     Hebridean Black             &lt;NA&gt;
+## 4         D4    F     Adult Peruvian Vipertooth             &lt;NA&gt;
+## 5         D5 &lt;NA&gt;  Juvenile Ukrainian Ironbelly             &lt;NA&gt;
+## 6         D6    F     Adult Norwegian Ridgeback             &lt;NA&gt;
+## 7         D7    M     Adult     Hebridean Black             &lt;NA&gt;
+## 8         D8 &lt;NA&gt;  Juvenile Peruvian Vipertooth             &lt;NA&gt;
+## 9         D9    F     Adult Norwegian Ridgeback             &lt;NA&gt;
+## 10       D10    F     Adult  Common Welsh Green             &lt;NA&gt;</code></pre>
+</div>
+<div id="tags" class="section level3">
+<h3><span class="header-section-number">2.0.2</span> Tags</h3>
+<p>Then we created a table that stores information on the GPS tags:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="db.html#cb10-1"></a><span class="kw">dbExecute</span>(dragons_db, <span class="st">&quot;CREATE TABLE tags (</span></span>
+<span id="cb10-2"><a href="db.html#cb10-2"></a><span class="st">tag_id char(6) NOT NULL PRIMARY KEY,</span></span>
+<span id="cb10-3"><a href="db.html#cb10-3"></a><span class="st">brand varchar(50),</span></span>
+<span id="cb10-4"><a href="db.html#cb10-4"></a><span class="st">status varchar(20)</span></span>
+<span id="cb10-5"><a href="db.html#cb10-5"></a><span class="st">);&quot;</span>)</span></code></pre></div>
+<p>And imported data into it:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="db.html#cb11-1"></a>tags &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;../../Course Material/Data/dragons/tags.csv&quot;</span>)</span>
+<span id="cb11-2"><a href="db.html#cb11-2"></a></span>
+<span id="cb11-3"><a href="db.html#cb11-3"></a><span class="kw">dbWriteTable</span>(dragons_db, <span class="st">&quot;tags&quot;</span>, tags, <span class="dt">append =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="db.html#cb12-1"></a><span class="kw">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM tags LIMIT 10;&quot;</span>)</span></code></pre></div>
+<pre><code>##    tag_id              brand      status
+## 1  N33529 Heatwave Telemetry Refurbished
+## 2  J47978          Undertone         New
+## 3  R61684 Heatwave Telemetry         New
+## 4  B35524         Aerotronic         New
+## 5  T55954         Aerotronic         New
+## 6  O31688          Undertone         New
+## 7  B61925          Undertone         New
+## 8  P47677         Aerotronic         New
+## 9  P35987         Aerotronic         New
+## 10 I41609 Heatwave Telemetry Refurbished</code></pre>
+</div>
+<div id="capture-sites" class="section level3">
+<h3><span class="header-section-number">2.0.3</span> Capture sites</h3>
+<p>Then, we created a table to store information on the capture sites:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="db.html#cb14-1"></a><span class="kw">dbExecute</span>(dragons_db, <span class="st">&quot;CREATE TABLE capture_sites (</span></span>
+<span id="cb14-2"><a href="db.html#cb14-2"></a><span class="st">site char(3) NOT NULL PRIMARY KEY,</span></span>
+<span id="cb14-3"><a href="db.html#cb14-3"></a><span class="st">utm_x double,</span></span>
+<span id="cb14-4"><a href="db.html#cb14-4"></a><span class="st">utm_y double</span></span>
+<span id="cb14-5"><a href="db.html#cb14-5"></a><span class="st">);&quot;</span>)</span></code></pre></div>
+<p>And imported data into it:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="db.html#cb15-1"></a>capture_sites &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;../../Course Material/Data/dragons/capture_sites.csv&quot;</span>)</span>
+<span id="cb15-2"><a href="db.html#cb15-2"></a></span>
+<span id="cb15-3"><a href="db.html#cb15-3"></a><span class="kw">names</span>(capture_sites)[<span class="dv">2</span><span class="op">:</span><span class="dv">3</span>] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;utm_x&quot;</span>, <span class="st">&quot;utm_y&quot;</span>)</span>
+<span id="cb15-4"><a href="db.html#cb15-4"></a></span>
+<span id="cb15-5"><a href="db.html#cb15-5"></a><span class="kw">dbWriteTable</span>(dragons_db, <span class="st">&quot;capture_sites&quot;</span>, capture_sites, <span class="dt">append =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="db.html#cb16-1"></a><span class="kw">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM capture_sites;&quot;</span>)</span></code></pre></div>
+<pre><code>##   site  utm_x   utm_y
+## 1  LOG 430659 4620909
+## 2  SLC 424790 4512583
+## 3  MOA 626325 4270426
+## 4  STG 271064 4108535
+## 5  DLT 364106 4357045</code></pre>
+</div>
+<div id="captures" class="section level3">
+<h3><span class="header-section-number">2.0.4</span> Captures</h3>
+<p>Then, we created a table that details each capture event:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="db.html#cb18-1"></a><span class="kw">dbExecute</span>(dragons_db, <span class="st">&quot;CREATE TABLE captures (</span></span>
+<span id="cb18-2"><a href="db.html#cb18-2"></a><span class="st">capture_id INTEGER PRIMARY KEY AUTOINCREMENT,</span></span>
+<span id="cb18-3"><a href="db.html#cb18-3"></a><span class="st">dragon_id varchar(5),</span></span>
+<span id="cb18-4"><a href="db.html#cb18-4"></a><span class="st">date text,</span></span>
+<span id="cb18-5"><a href="db.html#cb18-5"></a><span class="st">site char(3),</span></span>
+<span id="cb18-6"><a href="db.html#cb18-6"></a><span class="st">FOREIGN KEY(dragon_id) REFERENCES dragons(dragon_id)</span></span>
+<span id="cb18-7"><a href="db.html#cb18-7"></a><span class="st">FOREIGN KEY(site) REFERENCES capture_sites(site)</span></span>
+<span id="cb18-8"><a href="db.html#cb18-8"></a><span class="st">);&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="db.html#cb19-1"></a>captures &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;../../Course Material/Data/dragons/captures.csv&quot;</span>) </span>
+<span id="cb19-2"><a href="db.html#cb19-2"></a></span>
+<span id="cb19-3"><a href="db.html#cb19-3"></a>captures<span class="op">$</span>capture_id &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(captures)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="db.html#cb20-1"></a>captures &lt;-<span class="st"> </span>captures[, <span class="kw">c</span>(<span class="st">&quot;capture_id&quot;</span>, <span class="st">&quot;dragon&quot;</span>, <span class="st">&quot;capture_date&quot;</span>, <span class="st">&quot;capture_site&quot;</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="db.html#cb21-1"></a><span class="kw">names</span>(captures)[<span class="dv">2</span><span class="op">:</span><span class="dv">4</span>] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;dragon_id&quot;</span>, <span class="st">&quot;date&quot;</span>, <span class="st">&quot;site&quot;</span>)</span></code></pre></div>
+<p>And imported data into it:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="db.html#cb22-1"></a><span class="kw">dbWriteTable</span>(dragons_db, <span class="st">&quot;captures&quot;</span>, captures, <span class="dt">append =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="db.html#cb23-1"></a><span class="kw">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM captures LIMIT 10;&quot;</span>)</span></code></pre></div>
+<pre><code>##    capture_id dragon_id       date site
+## 1           1        D1 2012-08-10  MOA
+## 2           2        D2 2013-07-23  MOA
+## 3           3        D3 2016-10-19  SLC
+## 4           4        D4 2001-01-10  LOG
+## 5           5        D5 2000-09-28  MOA
+## 6           6        D6 2016-02-25  LOG
+## 7           7        D7 2012-11-05  MOA
+## 8           8        D8 2009-07-14  LOG
+## 9           9        D9 2001-08-17  STG
+## 10         10       D10 2017-01-17  LOG</code></pre>
+</div>
+<div id="morphometrics" class="section level3">
+<h3><span class="header-section-number">2.0.5</span> Morphometrics</h3>
+<p>Then we created a table to store data on morphometric measurements:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="db.html#cb25-1"></a><span class="kw">dbExecute</span>(dragons_db, <span class="st">&quot;CREATE TABLE morphometrics (</span></span>
+<span id="cb25-2"><a href="db.html#cb25-2"></a><span class="st">measurement_id INTEGER PRIMARY KEY AUTOINCREMENT,</span></span>
+<span id="cb25-3"><a href="db.html#cb25-3"></a><span class="st">dragon_id varchar(5),</span></span>
+<span id="cb25-4"><a href="db.html#cb25-4"></a><span class="st">date text,</span></span>
+<span id="cb25-5"><a href="db.html#cb25-5"></a><span class="st">total_body_length_cm float,</span></span>
+<span id="cb25-6"><a href="db.html#cb25-6"></a><span class="st">wingspan_cm float,</span></span>
+<span id="cb25-7"><a href="db.html#cb25-7"></a><span class="st">tail_length_cm float,</span></span>
+<span id="cb25-8"><a href="db.html#cb25-8"></a><span class="st">tarsus_length_cm float,</span></span>
+<span id="cb25-9"><a href="db.html#cb25-9"></a><span class="st">claw_length_cm float,</span></span>
+<span id="cb25-10"><a href="db.html#cb25-10"></a><span class="st">FOREIGN KEY (dragon_id) REFERENCES dragons(dragon_id)</span></span>
+<span id="cb25-11"><a href="db.html#cb25-11"></a><span class="st">);&quot;</span>)</span></code></pre></div>
+<p>And imported data into it:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="db.html#cb26-1"></a><span class="co"># Load csv file</span></span>
+<span id="cb26-2"><a href="db.html#cb26-2"></a>morphometrics &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;../../Course Material/Data/dragons/morphometrics.csv&quot;</span>) </span>
+<span id="cb26-3"><a href="db.html#cb26-3"></a></span>
+<span id="cb26-4"><a href="db.html#cb26-4"></a><span class="co"># Add auto-incremental number</span></span>
+<span id="cb26-5"><a href="db.html#cb26-5"></a>morphometrics<span class="op">$</span>measurement_id &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(morphometrics)</span>
+<span id="cb26-6"><a href="db.html#cb26-6"></a></span>
+<span id="cb26-7"><a href="db.html#cb26-7"></a><span class="co"># Re-order columns</span></span>
+<span id="cb26-8"><a href="db.html#cb26-8"></a>morphometrics &lt;-<span class="st"> </span>morphometrics[, <span class="kw">c</span>(<span class="st">&quot;measurement_id&quot;</span>, <span class="st">&quot;dragon&quot;</span>, <span class="st">&quot;date&quot;</span>,</span>
+<span id="cb26-9"><a href="db.html#cb26-9"></a>                                   <span class="st">&quot;total_body_length_cm&quot;</span>, <span class="st">&quot;wingspan_cm&quot;</span>,</span>
+<span id="cb26-10"><a href="db.html#cb26-10"></a>                                   <span class="st">&quot;tail_length_cm&quot;</span>, <span class="st">&quot;tarsus_length_cm&quot;</span>, </span>
+<span id="cb26-11"><a href="db.html#cb26-11"></a>                                   <span class="st">&quot;claw_length_cm&quot;</span>)]</span>
+<span id="cb26-12"><a href="db.html#cb26-12"></a></span>
+<span id="cb26-13"><a href="db.html#cb26-13"></a><span class="co"># Change column names to match</span></span>
+<span id="cb26-14"><a href="db.html#cb26-14"></a><span class="kw">names</span>(morphometrics)[<span class="dv">2</span>] &lt;-<span class="st"> &quot;dragon_id&quot;</span></span>
+<span id="cb26-15"><a href="db.html#cb26-15"></a></span>
+<span id="cb26-16"><a href="db.html#cb26-16"></a><span class="co"># Append to database table</span></span>
+<span id="cb26-17"><a href="db.html#cb26-17"></a><span class="kw">dbWriteTable</span>(dragons_db, <span class="st">&quot;morphometrics&quot;</span>, morphometrics, <span class="dt">append =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="db.html#cb27-1"></a><span class="kw">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM morphometrics LIMIT 10;&quot;</span>)</span></code></pre></div>
+<pre><code>##    measurement_id dragon_id       date total_body_length_cm wingspan_cm
+## 1               1       D96 2012-10-10            1069.8965   1389.5527
+## 2               2      D400 2003-07-03             333.4600    634.9109
+## 3               3      D316 2017-09-08             866.8935   1052.3702
+## 4               4      D317 2016-09-05            1146.9708   1356.8084
+## 5               5      D484 2016-12-04            1032.0520   1720.8641
+## 6               6      D149 2012-02-13             919.9908   1533.5991
+## 7               7      D285 2016-03-23             304.8285    698.8157
+## 8               8      D256 2013-09-07             358.9701    652.0053
+## 9               9      D283 2007-06-21            1698.1918   1387.1943
+## 10             10      D213 2001-12-12             353.6952    670.5283
+##    tail_length_cm tarsus_length_cm claw_length_cm
+## 1        595.2706        121.65175      15.596219
+## 2        104.2241         38.10844       4.305086
+## 3        373.7619         68.16869      12.719697
+## 4        542.5670        172.43663      14.809363
+## 5        596.4419        114.05057      11.985672
+## 6        563.9201        134.18051      11.005070
+## 7        115.8964         42.18657       5.041634
+## 8        148.3656         43.57849       4.576640
+## 9        666.4246        147.44219      13.189233
+## 10       140.4342         43.60513       4.248564</code></pre>
+</div>
+<div id="diet" class="section level3">
+<h3><span class="header-section-number">2.0.6</span> Diet</h3>
+<p>Then we created a table to store our diet data:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="db.html#cb29-1"></a><span class="kw">dbExecute</span>(dragons_db, <span class="st">&quot;CREATE TABLE diet (</span></span>
+<span id="cb29-2"><a href="db.html#cb29-2"></a><span class="st">diet_id INTEGER PRIMARY KEY AUTOINCREMENT,</span></span>
+<span id="cb29-3"><a href="db.html#cb29-3"></a><span class="st">dragon_id varchar(5),</span></span>
+<span id="cb29-4"><a href="db.html#cb29-4"></a><span class="st">sample_id varchar(8),</span></span>
+<span id="cb29-5"><a href="db.html#cb29-5"></a><span class="st">date text,</span></span>
+<span id="cb29-6"><a href="db.html#cb29-6"></a><span class="st">item_id integer,</span></span>
+<span id="cb29-7"><a href="db.html#cb29-7"></a><span class="st">item varchar(50),</span></span>
+<span id="cb29-8"><a href="db.html#cb29-8"></a><span class="st">FOREIGN KEY (dragon_id) REFERENCES dragons(dragon_id)</span></span>
+<span id="cb29-9"><a href="db.html#cb29-9"></a><span class="st">);&quot;</span>)</span></code></pre></div>
+<p>And imported data into it:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="db.html#cb30-1"></a>diet &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;../../Course Material/Data/dragons/diet.csv&quot;</span>) </span>
+<span id="cb30-2"><a href="db.html#cb30-2"></a></span>
+<span id="cb30-3"><a href="db.html#cb30-3"></a>diet<span class="op">$</span>diet_id &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(diet)</span>
+<span id="cb30-4"><a href="db.html#cb30-4"></a></span>
+<span id="cb30-5"><a href="db.html#cb30-5"></a>diet &lt;-<span class="st"> </span>diet[, <span class="kw">c</span>(<span class="st">&quot;diet_id&quot;</span>, <span class="st">&quot;dragon&quot;</span>, <span class="st">&quot;sample_id&quot;</span>, <span class="st">&quot;sample_dates&quot;</span>, <span class="st">&quot;item_id&quot;</span>,</span>
+<span id="cb30-6"><a href="db.html#cb30-6"></a>                 <span class="st">&quot;item&quot;</span>)]</span>
+<span id="cb30-7"><a href="db.html#cb30-7"></a></span>
+<span id="cb30-8"><a href="db.html#cb30-8"></a><span class="kw">names</span>(diet)[<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;dragon_id&quot;</span>, <span class="st">&quot;date&quot;</span>)</span>
+<span id="cb30-9"><a href="db.html#cb30-9"></a></span>
+<span id="cb30-10"><a href="db.html#cb30-10"></a><span class="kw">dbWriteTable</span>(dragons_db, <span class="st">&quot;diet&quot;</span>, diet, <span class="dt">append =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="db.html#cb31-1"></a><span class="kw">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM diet LIMIT 10;&quot;</span>)</span></code></pre></div>
+<pre><code>##    diet_id dragon_id sample_id       date item_id          item
+## 1        1      D221    D221-1 2017-11-22       1  Domestic cow
+## 2        2      D221    D221-1 2017-11-22       2 Domestic goat
+## 3        3      D221    D221-1 2017-11-22       3        Coyote
+## 4        4      D221    D221-1 2017-11-22       4  Domestic cow
+## 5        5      D221    D221-1 2017-11-22       5  Domestic cow
+## 6        6      D221    D221-1 2017-11-22       6     Mule deer
+## 7        7      D119    D119-1 2012-06-28       1     Mule deer
+## 8        8      D119    D119-1 2012-06-28       2        Cougar
+## 9        9      D119    D119-1 2012-06-28       3 Domestic goat
+## 10      10      D119    D119-1 2012-06-28       4 Mountain goat</code></pre>
+</div>
+<div id="deployments" class="section level3">
+<h3><span class="header-section-number">2.0.7</span> Deployments</h3>
+<p>Then we created a table to store deployment information:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="db.html#cb33-1"></a><span class="kw">dbExecute</span>(dragons_db, <span class="st">&quot;CREATE TABLE deployments (</span></span>
+<span id="cb33-2"><a href="db.html#cb33-2"></a><span class="st">deployment_id INTEGER PRIMARY KEY AUTOINCREMENT,</span></span>
+<span id="cb33-3"><a href="db.html#cb33-3"></a><span class="st">dragon_id varchar(5),</span></span>
+<span id="cb33-4"><a href="db.html#cb33-4"></a><span class="st">tag_id char(6),</span></span>
+<span id="cb33-5"><a href="db.html#cb33-5"></a><span class="st">start_deployment text,</span></span>
+<span id="cb33-6"><a href="db.html#cb33-6"></a><span class="st">end_deployment text,</span></span>
+<span id="cb33-7"><a href="db.html#cb33-7"></a><span class="st">FOREIGN KEY(dragon_id) REFERENCES dragons(dragon_id)</span></span>
+<span id="cb33-8"><a href="db.html#cb33-8"></a><span class="st">FOREIGN KEY(tag_id) REFERENCES tags(tag_id)</span></span>
+<span id="cb33-9"><a href="db.html#cb33-9"></a><span class="st">);&quot;</span>)</span></code></pre></div>
+<p>And imported data into it:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="db.html#cb34-1"></a>deployments &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;../../Course Material/Data/dragons/deployments.csv&quot;</span>) </span>
+<span id="cb34-2"><a href="db.html#cb34-2"></a></span>
+<span id="cb34-3"><a href="db.html#cb34-3"></a>deployments<span class="op">$</span>deployment_id &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(deployments)</span>
+<span id="cb34-4"><a href="db.html#cb34-4"></a></span>
+<span id="cb34-5"><a href="db.html#cb34-5"></a>deployments &lt;-<span class="st"> </span>deployments[, <span class="kw">c</span>(<span class="st">&quot;deployment_id&quot;</span>, <span class="st">&quot;dragon&quot;</span>, <span class="st">&quot;tag&quot;</span>, </span>
+<span id="cb34-6"><a href="db.html#cb34-6"></a>                               <span class="st">&quot;start_deploy&quot;</span>, <span class="st">&quot;end_deploy&quot;</span>)]</span>
+<span id="cb34-7"><a href="db.html#cb34-7"></a></span>
+<span id="cb34-8"><a href="db.html#cb34-8"></a><span class="kw">names</span>(deployments)[<span class="dv">2</span><span class="op">:</span><span class="dv">5</span>] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;dragon_id&quot;</span>, <span class="st">&quot;tag_id&quot;</span>, <span class="st">&quot;start_deployment&quot;</span>, <span class="st">&quot;end_deployment&quot;</span>)</span>
+<span id="cb34-9"><a href="db.html#cb34-9"></a></span>
+<span id="cb34-10"><a href="db.html#cb34-10"></a><span class="kw">dbWriteTable</span>(dragons_db, <span class="st">&quot;deployments&quot;</span>, deployments, <span class="dt">append =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="db.html#cb35-1"></a><span class="kw">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM deployments LIMIT 10;&quot;</span>)</span></code></pre></div>
+<pre><code>##    deployment_id dragon_id tag_id start_deployment end_deployment
+## 1              1      D486 N33529       2006-12-20     2007-07-04
+## 2              2      D393 J47978       2008-01-13     2008-10-13
+## 3              3       D88 R61684       2004-09-19     2004-12-01
+## 4              4      D330 B35524       2015-11-21     2016-08-02
+## 5              5      D478 T55954       2002-05-07     2002-10-26
+## 6              6      D300 O31688       2006-01-20     2006-08-23
+## 7              7      D380 B61925       2015-01-27     2015-10-21
+## 8              8      D315 P47677       2006-03-03     2006-06-06
+## 9              9      D209 P35987       2007-02-26     2007-05-31
+## 10            10      D357 I41609       2013-09-09     2014-03-08</code></pre>
+</div>
+<div id="gps-tracking-data" class="section level3">
+<h3><span class="header-section-number">2.0.8</span> GPS-tracking data</h3>
+<p>Then we created a table to store the GPS tracking data as it comes out of the tags:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="db.html#cb37-1"></a><span class="kw">dbExecute</span>(dragons_db, <span class="st">&quot;CREATE TABLE gps_data_raw (</span></span>
+<span id="cb37-2"><a href="db.html#cb37-2"></a><span class="st">gps_id INTEGER PRIMARY KEY AUTOINCREMENT,</span></span>
+<span id="cb37-3"><a href="db.html#cb37-3"></a><span class="st">tag_id char(6),</span></span>
+<span id="cb37-4"><a href="db.html#cb37-4"></a><span class="st">timestamp text, </span></span>
+<span id="cb37-5"><a href="db.html#cb37-5"></a><span class="st">utm_x double,</span></span>
+<span id="cb37-6"><a href="db.html#cb37-6"></a><span class="st">utm_y double,</span></span>
+<span id="cb37-7"><a href="db.html#cb37-7"></a><span class="st">FOREIGN KEY(tag_id) REFERENCES tags(tag_id)</span></span>
+<span id="cb37-8"><a href="db.html#cb37-8"></a><span class="st">);&quot;</span>)</span></code></pre></div>
+<p>And imported data into it:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="db.html#cb38-1"></a>gps_data_raw &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;../../Course Material/Data/dragons/telemetry_raw.csv&quot;</span>) </span>
+<span id="cb38-2"><a href="db.html#cb38-2"></a></span>
+<span id="cb38-3"><a href="db.html#cb38-3"></a>gps_data_raw<span class="op">$</span>gps_id &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(gps_data_raw)</span>
+<span id="cb38-4"><a href="db.html#cb38-4"></a></span>
+<span id="cb38-5"><a href="db.html#cb38-5"></a>gps_data_raw &lt;-<span class="st"> </span>gps_data_raw[, <span class="kw">c</span>(<span class="st">&quot;gps_id&quot;</span>, <span class="st">&quot;tag&quot;</span>, <span class="st">&quot;timestamp&quot;</span>, <span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>)]</span>
+<span id="cb38-6"><a href="db.html#cb38-6"></a></span>
+<span id="cb38-7"><a href="db.html#cb38-7"></a><span class="kw">names</span>(gps_data_raw)[<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>)] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;tag_id&quot;</span>, <span class="st">&quot;utm_x&quot;</span>, <span class="st">&quot;utm_y&quot;</span>)</span>
+<span id="cb38-8"><a href="db.html#cb38-8"></a></span>
+<span id="cb38-9"><a href="db.html#cb38-9"></a><span class="kw">dbWriteTable</span>(dragons_db, <span class="st">&quot;gps_data_raw&quot;</span>, gps_data_raw, <span class="dt">append =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="db.html#cb39-1"></a><span class="kw">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM gps_data_raw LIMIT 10;&quot;</span>)</span></code></pre></div>
+<pre><code>##    gps_id tag_id           timestamp    utm_x   utm_y
+## 1       1 N33529 2006-12-20 00:02:03 626479.9 4270480
+## 2       2 N33529 2006-12-20 03:02:01 628321.6 4271404
+## 3       3 N33529 2006-12-20 06:00:45 628111.1 4271812
+## 4       4 N33529 2006-12-20 08:59:56 628294.4 4271940
+## 5       5 N33529 2006-12-20 12:02:14 628642.2 4273090
+## 6       6 N33529 2006-12-20 15:00:12 628750.1 4273879
+## 7       7 N33529 2006-12-20 18:00:29 625775.1 4272723
+## 8       8 N33529 2006-12-20 20:59:54 625682.6 4272723
+## 9       9 N33529 2006-12-21 00:02:12 625493.0 4272917
+## 10     10 N33529 2006-12-21 03:01:18 628051.1 4272672</code></pre>
+<p>Finally, we were able to generate a table that automatically associates raw GPS
+data to the right individual by intersecting the date each location was taken
+with the ID of the individual that was wearing that tag at that time:</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="db.html#cb41-1"></a><span class="kw">dbExecute</span>(dragons_db, <span class="st">&quot;CREATE TABLE gps_data (</span></span>
+<span id="cb41-2"><a href="db.html#cb41-2"></a><span class="st">loc_id INTEGER PRIMARY KEY,</span></span>
+<span id="cb41-3"><a href="db.html#cb41-3"></a><span class="st">tag_id char(6),</span></span>
+<span id="cb41-4"><a href="db.html#cb41-4"></a><span class="st">dragon_id varchar(5),</span></span>
+<span id="cb41-5"><a href="db.html#cb41-5"></a><span class="st">timestamp text,</span></span>
+<span id="cb41-6"><a href="db.html#cb41-6"></a><span class="st">utm_x double,</span></span>
+<span id="cb41-7"><a href="db.html#cb41-7"></a><span class="st">utm_y double,</span></span>
+<span id="cb41-8"><a href="db.html#cb41-8"></a><span class="st">FOREIGN KEY (tag_id) REFERENCES tags(tag_id)</span></span>
+<span id="cb41-9"><a href="db.html#cb41-9"></a><span class="st">FOREIGN KEY (dragon_id) REFERENCES dragons(dragon_id)</span></span>
+<span id="cb41-10"><a href="db.html#cb41-10"></a><span class="st">);&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="db.html#cb42-1"></a><span class="kw">dbExecute</span>(dragons_db, <span class="st">&quot;INSERT INTO gps_data (</span></span>
+<span id="cb42-2"><a href="db.html#cb42-2"></a><span class="st">tag_id, dragon_id, timestamp, utm_x, utm_y)</span></span>
+<span id="cb42-3"><a href="db.html#cb42-3"></a><span class="st">SELECT</span></span>
+<span id="cb42-4"><a href="db.html#cb42-4"></a><span class="st">deployments.tag_id,</span></span>
+<span id="cb42-5"><a href="db.html#cb42-5"></a><span class="st">deployments.dragon_id,</span></span>
+<span id="cb42-6"><a href="db.html#cb42-6"></a><span class="st">gps_data_raw.timestamp,</span></span>
+<span id="cb42-7"><a href="db.html#cb42-7"></a><span class="st">gps_data_raw.utm_x,</span></span>
+<span id="cb42-8"><a href="db.html#cb42-8"></a><span class="st">gps_data_raw.utm_y</span></span>
+<span id="cb42-9"><a href="db.html#cb42-9"></a><span class="st">FROM deployments LEFT JOIN gps_data_raw USING (tag_id)</span></span>
+<span id="cb42-10"><a href="db.html#cb42-10"></a><span class="st">WHERE gps_data_raw.tag_id = deployments.tag_id AND</span></span>
+<span id="cb42-11"><a href="db.html#cb42-11"></a><span class="st">(</span></span>
+<span id="cb42-12"><a href="db.html#cb42-12"></a><span class="st">    (</span></span>
+<span id="cb42-13"><a href="db.html#cb42-13"></a><span class="st">    (strftime(gps_data_raw.timestamp) &gt;= strftime(deployments.start_deployment)) AND</span></span>
+<span id="cb42-14"><a href="db.html#cb42-14"></a><span class="st">    (strftime(gps_data_raw.timestamp) &lt;= strftime(deployments.end_deployment))</span></span>
+<span id="cb42-15"><a href="db.html#cb42-15"></a><span class="st">    )</span></span>
+<span id="cb42-16"><a href="db.html#cb42-16"></a><span class="st">OR </span></span>
+<span id="cb42-17"><a href="db.html#cb42-17"></a><span class="st">    (</span></span>
+<span id="cb42-18"><a href="db.html#cb42-18"></a><span class="st">    (gps_data_raw.timestamp &gt;= deployments.start_deployment) AND</span></span>
+<span id="cb42-19"><a href="db.html#cb42-19"></a><span class="st">    (deployments.end_deployment IS NULL)</span></span>
+<span id="cb42-20"><a href="db.html#cb42-20"></a><span class="st">    )</span></span>
+<span id="cb42-21"><a href="db.html#cb42-21"></a><span class="st">);&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="db.html#cb43-1"></a><span class="kw">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM gps_data LIMIT 10;&quot;</span>)</span></code></pre></div>
+<pre><code>##    loc_id tag_id dragon_id           timestamp    utm_x   utm_y
+## 1       1 N33529      D486 2006-12-20 00:02:03 626479.9 4270480
+## 2       2 N33529      D486 2006-12-20 03:02:01 628321.6 4271404
+## 3       3 N33529      D486 2006-12-20 06:00:45 628111.1 4271812
+## 4       4 N33529      D486 2006-12-20 08:59:56 628294.4 4271940
+## 5       5 N33529      D486 2006-12-20 12:02:14 628642.2 4273090
+## 6       6 N33529      D486 2006-12-20 15:00:12 628750.1 4273879
+## 7       7 N33529      D486 2006-12-20 18:00:29 625775.1 4272723
+## 8       8 N33529      D486 2006-12-20 20:59:54 625682.6 4272723
+## 9       9 N33529      D486 2006-12-21 00:02:12 625493.0 4272917
+## 10     10 N33529      D486 2006-12-21 03:01:18 628051.1 4272672</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="morph.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

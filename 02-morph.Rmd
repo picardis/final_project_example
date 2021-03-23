@@ -1,0 +1,108 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+# Body Characteristics of Dragon Species Evolved in Different Continents {#morph}
+
+```{r load1, echo = FALSE, eval = TRUE, message = FALSE}
+library(DBI)
+library(tidyverse)
+
+dragons_db <- dbConnect(RSQLite::SQLite(), "../../Course Material/Data/dragons/dragons.db")
+
+dragons <- dbGetQuery(dragons_db, "SELECT * FROM dragons;")
+capture_sites <- dbGetQuery(dragons_db, "SELECT * FROM capture_sites;")
+captures <- dbGetQuery(dragons_db, "SELECT * FROM captures;")
+morphometrics <- dbGetQuery(dragons_db, "SELECT * FROM morphometrics;")
+diet <- dbGetQuery(dragons_db, "SELECT * FROM diet;")
+tags <- dbGetQuery(dragons_db, "SELECT * FROM tags;")
+deployments <- dbGetQuery(dragons_db, "SELECT * FROM deployments;")
+telemetry <- dbGetQuery(dragons_db, "SELECT * FROM gps_data;")
+```
+
+Dragons found today in Utah belong to 10 different species that evolved in 
+different parts of the world. 
+
+```{r}
+dragons %>% 
+  pull(species) %>% 
+  unique()
+```
+
+Previous literature has shown that closeness of geographic origin corresponds to
+taxonomic relatedness. Based on this, we hypothesized that dragons that evolved 
+in the same continent would be more similar in morphometrics characteristics 
+than dragons that evolved in different continents, because they are taxonomically
+more distant. Many of the species that today live in Utah evolved in Europe. We
+want to compare these dragons to those who evolved in South America, Asia, and
+Oceania, even though we only have one representative species for each of those 
+continents. We expect European dragon species to be more similar between each
+other than to other dragon species in body size. 
+
+Let's reclassify dragons based on the continent where they evolved:
+
+```{r}
+
+dragons <- dragons %>% 
+  mutate(continent = case_when(
+    species %in% c("Hebridean Black",
+                   "Romanian Longhorn",
+                   "Ukrainian Ironbelly",
+                   "Norwegian Ridgeback",
+                   "Common Welsh Green",
+                   "Swedish Short-Snout",
+                   "Hungarian Horntail") ~ "Europe",
+    species == "Peruvian Vipertooth" ~ "South America",
+    species == "Chinese Fireball" ~ "Asia",
+    species == "Antipodean Opaleye" ~ "Oceania"
+  ))
+
+```
+
+Now let's plot mean body size of adult dragons by species and continent of origin:
+
+```{r}
+
+reordered_levels <- dragons %>% 
+  select(species, continent) %>% 
+  distinct() %>% 
+  arrange(continent) %>% 
+  pull(species)
+
+morphometrics %>% 
+  left_join(dragons, by = "dragon_id") %>% 
+  filter(age_class == "Adult") %>% 
+  group_by(species, continent) %>% 
+  summarize(mean_body_size = mean(total_body_length_cm, na.rm = TRUE)) %>% 
+  ungroup() %>% 
+  mutate(species = factor(species, levels = reordered_levels)) %>% 
+  ggplot(aes(x = species, y = mean_body_size, fill = continent)) +
+  geom_bar(stat = "identity") +
+  labs(x = " ", y = "Mean body size (cm)", fill = "Continent") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 90))
+
+```
+
+Let's do the same thing with wingspan:
+
+```{r}
+
+morphometrics %>% 
+  left_join(dragons, by = "dragon_id") %>% 
+  filter(age_class == "Adult") %>% 
+  group_by(species, continent) %>% 
+  summarize(mean_wingspan = mean(wingspan_cm, na.rm = TRUE)) %>% 
+  ungroup() %>% 
+  mutate(species = factor(species, levels = reordered_levels)) %>% 
+  ggplot(aes(x = species, y = mean_wingspan, fill = continent)) +
+  geom_bar(stat = "identity") +
+  labs(x = " ", y = "Mean wingspan (cm)", fill = "Continent") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 90))
+
+```
+
+It looks like our hypothesis was wrong. Dragons from Europe do not seem to differ
+more from dragons from other continents than they do between each other.
